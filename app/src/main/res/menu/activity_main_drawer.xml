@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Menu" />
+        <item
+            android:id="@+id/nav_missionList"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Liste de missions" />
+        <item
+            android:id="@+id/nav_writer"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Remplir un BI - Registre" />
+        <item
+            android:id="@+id/nav_dictionnary"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Astuces de dépannage" />
+    </group>
+
+    <item android:title="Communication">
+        <menu>
+            <item
+                android:id="@+id/nav_upload"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Enregistrer le rapport" />
+            <item
+                android:id="@+id/nav_contacts"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Contacts" />
+        </menu>
+    </item>
+
+</menu>
