@@ -2,9 +2,11 @@ package com.example.simea.simea;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +47,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        String pathname = Environment.getExternalStorageDirectory() + "/Simea/bnobo";
+        File AppFolder = new File(pathname);
+        String result;
+        String result2;
+        if(!AppFolder.exists())
+            result2 = "Doesn't exist";
+        else
+            result2 = "Exist";
+        if(AppFolder.mkdirs())
+            result = "Success";
+        else
+            result = "failure";
+        Log.i("The folder Exist? : ", result2);
+        File outputFile = new File(AppFolder, "Simea");
+        Log.i("the folder is",pathname);
+
+
+
     }
 
     @Override
