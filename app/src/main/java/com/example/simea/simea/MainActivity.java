@@ -21,7 +21,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,28 +107,20 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_menu) {
             // Tableau de bord
-            MenuFragment fragment = new MenuFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
-            ft.commit();
+
         } else if (id == R.id.nav_missionList) {
             //To-do List (réparation + dépanages + entretien + ...)
-            MissionListFragment fragment = new MissionListFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
-            ft.commit();
+
         } else if (id == R.id.nav_writer) {
             // Rédaction Bon Intervention
-            WriterFragment fragment = new WriterFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
-            ft.commit();
+
         } else if (id == R.id.nav_dictionnary) {
             //
             DictionnaryFragment fragment = new DictionnaryFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
+            Log.i("bonobo","created dict frag");
         } else if (id == R.id.nav_upload) {
             //
         } else if (id == R.id.nav_contacts) {
@@ -138,6 +130,16 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(Solution item) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
     /*public void displayView(int viewId) {
 

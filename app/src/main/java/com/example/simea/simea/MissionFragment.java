@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.example.simea.simea.dummy.DummyContent;
 import com.example.simea.simea.dummy.DummyContent.DummyItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class DictionnaryFragment extends Fragment {
+public class MissionFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -34,13 +33,13 @@ public class DictionnaryFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public DictionnaryFragment() {
+    public MissionFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static DictionnaryFragment newInstance(int columnCount) {
-        DictionnaryFragment fragment = new DictionnaryFragment();
+    public static MissionFragment newInstance(int columnCount) {
+        MissionFragment fragment = new MissionFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -59,12 +58,7 @@ public class DictionnaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        List<Solution> dataset = new ArrayList<>();
-        for(int i=0; i<121;i++)
-        {
-            dataset.add(new Solution("FA n°"+i,"Dummy","dodo"+i));
-        }
+        View view = inflater.inflate(R.layout.fragment_mission_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -75,7 +69,7 @@ public class DictionnaryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(dataset,mListener));
+            recyclerView.setAdapter(new MyMissionRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }
@@ -110,6 +104,6 @@ public class DictionnaryFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Solution item);
+        void onListFragmentInteraction(DummyItem item);
     }
 }

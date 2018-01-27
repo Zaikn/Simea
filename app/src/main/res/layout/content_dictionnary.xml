@@ -8,16 +8,4 @@
     tools:context="com.example.simea.simea.DictionnaryActivity"
     tools:showIn="@layout/activity_dictionnary">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/myRecyclerView"
-        android:layout_width="match_parent"
-        android:scrollbars="vertical"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

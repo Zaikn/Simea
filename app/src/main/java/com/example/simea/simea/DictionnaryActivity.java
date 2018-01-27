@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -16,15 +17,15 @@ public class DictionnaryActivity extends AppCompatActivity {
     private RecyclerView myRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<String> myDataSet=new ArrayList();
+    private ArrayList<Solution> myDataSet=new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_dictionnary);
+        setContentView(R.layout.activity_dictionnary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Log.i("real test youness","This test created a dictionnary activity");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,10 +40,10 @@ public class DictionnaryActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         myRecyclerView.setLayoutManager(layoutManager);
-        myDataSet.add("bonobo");
-        myDataSet.add("bonobo2");
-        myDataSet.add("bonobo3");
-        myDataSet.add("bonobo4");
+        for(int i=0;i<121;i++)
+        {
+            myDataSet.add(new Solution("Site n°"+i,"FA"+i+"B04","Nothing to say about it"));
+        }
         mAdapter = new DictAdapter(myDataSet);
         myRecyclerView.setAdapter(mAdapter);
         myRecyclerView.setAdapter(mAdapter);

@@ -21,11 +21,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MissionListActivity"
-            android:label="@string/title_activity_mission_list"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FileWriterActivity" />
-        <activity
             android:name=".DictionnaryActivity"
             android:label="@string/title_activity_dictionnary"
             android:theme="@style/AppTheme.NoActionBar"></activity>

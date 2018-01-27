@@ -18,32 +18,35 @@ import java.util.ArrayList;
 class DictAdapter extends RecyclerView.Adapter<DictAdapter.ViewHolder>{
 
     private Context mContext;
-    private ArrayList<String> mDataset;
+    private ArrayList<Solution> mDataset;
 
-    public DictAdapter(ArrayList<String> myDataSet) {
+    public DictAdapter(ArrayList<Solution> myDataSet) {
         this.mDataset = myDataSet;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mTextView;
+        TextView Title;
+        TextView infos;
 
-        public ViewHolder(TextView itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            mTextView = itemView;
+            Title = itemView.findViewById(R.id.textView);
+            infos = itemView.findViewById(R.id.info_text);
         }
     }
 
 
     @Override
     public DictAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView v  = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item,parent,false);
+        View v  = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item,parent,false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(DictAdapter.ViewHolder holder, int position) {
-        holder.mTextView.setText(mDataset.get(position));
+        holder.Title.setText(mDataset.get(position).getSite());
+        holder.infos.setText(mDataset.get(position).getDescription());
     }
 
     @Override
