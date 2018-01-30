@@ -1,6 +1,5 @@
 package com.example.simea.simea;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -18,10 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
+        implements MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +105,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_menu) {
             // Tableau de bord
+            MenuFragment fragment = new MenuFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
+            Log.i("bonobo","created dict frag");
 
         } else if (id == R.id.nav_missionList) {
             //To-do List (réparation + dépanages + entretien + ...)
+            MissionFragment fragment = new MissionFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
+            Log.i("bonobo","created dict frag");
 
         } else if (id == R.id.nav_writer) {
             // Rédaction Bon Intervention
@@ -140,6 +148,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public void onListFragmentInteraction(Mission item) {
+        
     }
     /*public void displayView(int viewId) {
 

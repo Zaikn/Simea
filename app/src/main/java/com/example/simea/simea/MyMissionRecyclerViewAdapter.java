@@ -44,7 +44,7 @@ public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMission
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    //mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
         });
@@ -59,15 +59,15 @@ public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMission
         public final View mView;
         public final TextView id;
         public final TextView description;
-        public final TextView name;
+        public final TextView Site;
         public Mission mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            id =  view.findViewById(R.id.id);
-            description =  view.findViewById(R.id.Description);
-            name = view.findViewById(R.id.Name);
+            id =  view.findViewById(R.id.idMission);
+            description =  view.findViewById(R.id.missionDescription);
+            Site = view.findViewById(R.id.Site);
         }
 
         @Override
