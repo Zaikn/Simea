@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.simea.simea.MissionFragment.OnListFragmentInteractionListener;
-import com.example.simea.simea.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ *
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMissionRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Mission> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyMissionRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyMissionRecyclerViewAdapter(List<Mission> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,8 +35,8 @@ public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMission
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.id.setText(mValues.get(position).toString());
+        holder.description.setText(mValues.get(position).toString());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +44,7 @@ public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMission
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    //mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
         });
@@ -58,20 +57,22 @@ public class MyMissionRecyclerViewAdapter extends RecyclerView.Adapter<MyMission
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView id;
+        public final TextView description;
+        public final TextView name;
+        public Mission mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            id =  view.findViewById(R.id.id);
+            description =  view.findViewById(R.id.Description);
+            name = view.findViewById(R.id.Name);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '"  + "'";
         }
     }
 }

@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.simea.simea.dummy.DummyContent;
-import com.example.simea.simea.dummy.DummyContent.DummyItem;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class DictionnaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_solution_list, container, false);
         List<Solution> dataset = new ArrayList<>();
         for(int i=0; i<121;i++)
         {
@@ -75,7 +72,7 @@ public class DictionnaryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(dataset,mListener));
+            recyclerView.setAdapter(new MySolutionRecyclerViewAdapter(dataset,mListener));
         }
         return view;
     }

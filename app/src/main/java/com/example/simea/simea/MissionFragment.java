@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.simea.simea.dummy.DummyContent;
 import com.example.simea.simea.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,6 +61,10 @@ public class MissionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mission_list, container, false);
 
+        List<Mission> dataset = new ArrayList<>();
+        dataset.add(new Mission());
+
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -69,7 +74,7 @@ public class MissionFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyMissionRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyMissionRecyclerViewAdapter(dataset, mListener));
         }
         return view;
     }

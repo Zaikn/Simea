@@ -11,12 +11,12 @@ import com.example.simea.simea.DictionnaryFragment.OnListFragmentInteractionList
 import java.util.List;
 
 
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class MySolutionRecyclerViewAdapter extends RecyclerView.Adapter<MySolutionRecyclerViewAdapter.ViewHolder> {
 
     private final List<Solution> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<Solution> items, OnListFragmentInteractionListener listener) {
+    public MySolutionRecyclerViewAdapter(List<Solution> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -24,15 +24,16 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+                .inflate(R.layout.fragment_solution, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getSite());
-        holder.mContentView.setText(mValues.get(position).getDescription());
+        holder.name.setText(mValues.get(position).getSite());
+        holder.description.setText(mValues.get(position).getDescription());
+        holder.id.setText(mValues.get(position).getAppareil());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,20 +54,22 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView id;
+        public final TextView description;
+        public final TextView name;
         public Solution mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            id = (TextView) view.findViewById(R.id.id);
+            description = (TextView) view.findViewById(R.id.Description);
+            name = (TextView) view.findViewById(R.id.Name);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + description.getText() + "'";
         }
     }
 }

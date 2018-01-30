@@ -11,16 +11,17 @@ import java.util.Date;
 
 public class Solution{
 
+    private String id;
     private String site;
     private String Appareil;
-    private String Description;
+    private String description;
     private Date date;
     private Image proof;
 
     public Solution(String site, String appareil, String description) {
-        this.site = site;
+        this.id = site;
         this.Appareil = appareil;
-        this.Description = description;
+        this.description = description;
     }
 
     public String getSite() {
@@ -40,11 +41,11 @@ public class Solution{
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public Date getDate() {
