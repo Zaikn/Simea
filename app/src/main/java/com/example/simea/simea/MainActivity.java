@@ -1,5 +1,6 @@
 package com.example.simea.simea;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -19,7 +20,7 @@ import android.view.MenuItem;
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity
-        implements MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
+        implements WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +122,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_writer) {
             // Rédaction Bon Intervention
+            WriterFragment fragment = new WriterFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
+            Log.i("bonobo","created dict frag");
 
         } else if (id == R.id.nav_dictionnary) {
             //
@@ -153,6 +159,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onListFragmentInteraction(Mission item) {
         
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
     /*public void displayView(int viewId) {
 
