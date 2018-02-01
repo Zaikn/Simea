@@ -15,7 +15,7 @@
             android:orientation="vertical">
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/Site"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout_editor_absoluteX="8dp"
@@ -27,32 +27,42 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/Repair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="CheckBox" />
+                    android:text="Réparation" />
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/Upkeep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="CheckBox" />
+                    android:text="Entretien" />
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/Dep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="CheckBox" />
+                    android:text="Dépannage" />
+
             </LinearLayout>
-            <Spinner
-                android:id="@+id/spinner3"
+
+            <Button
+                android:id="@+id/addWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="205dp" />
+                android:layout_weight="1"
+                android:text="Ajouter un travail" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/WorkFrame">
+            </FrameLayout>
+
+
+
             <com.byox.drawview.views.DrawView
                 android:id="@+id/draw_signature"
                 android:layout_width="match_parent"

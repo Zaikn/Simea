@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity
-        implements WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
+        implements TravauxFragment.OnListFragmentInteractionListener, WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +163,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(Travaux item) {
 
     }
     /*public void displayView(int viewId) {
