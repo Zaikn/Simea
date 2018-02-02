@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.simea.simea.dummy.DummyContent;
 import com.example.simea.simea.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class TravauxFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    private List<Travaux> mdata;
+    private List<Travaux> mdata = new ArrayList<>();
     private MyTravauxRecyclerViewAdapter madapter;
 
     /**
@@ -61,7 +62,7 @@ public class TravauxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_travaux_list, container, false);
-
+        mdata.add(new Travaux(0,0));
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
