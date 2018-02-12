@@ -66,6 +66,7 @@ public class DictionnaryFragment extends Fragment {
         {
             mdata.add(new Solution("FA n°"+i,"Dummy","dodo"+i));
         }
+        madapter = new MySolutionRecyclerViewAdapter(mdata, mListener);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

@@ -82,8 +82,6 @@ public class MissionFragment extends Fragment {
         }
         RecyclerView recyclerView = (RecyclerView) view;
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(madapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
