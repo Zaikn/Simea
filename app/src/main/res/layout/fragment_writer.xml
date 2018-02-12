@@ -57,10 +57,9 @@
                 android:text="Ajouter un travail" />
 
             <FrameLayout
+                android:id="@+id/WorkFrame"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/WorkFrame">
-            </FrameLayout>
-
+                android:layout_height="315dp"></FrameLayout>
 
 
             <com.byox.drawview.views.DrawView

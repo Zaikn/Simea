@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,9 @@ public class MissionFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private MyMissionRecyclerViewAdapter madapter;
+    private List<Mission> mdata;
+    private ItemTouchHelper mItemTouchHelper;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -61,10 +65,10 @@ public class MissionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mission_list, container, false);
 
-        List<Mission> dataset = new ArrayList<>();
-        dataset.add(new Mission());
+        mdata = new ArrayList<>();
+        mdata.add(new Mission());
 
-
+        madapter = new MyMissionRecyclerViewAdapter(mdata, mListener);
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -74,8 +78,28 @@ public class MissionFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyMissionRecyclerViewAdapter(dataset, mListener));
+            recyclerView.setAdapter(madapter);
         }
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(madapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                RemoveItem(viewHolder.getAdapterPosition());
+            }
+        };
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
+
         return view;
     }
 
@@ -110,5 +134,16 @@ public class MissionFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Mission item);
+    }
+
+    public void AddItem()
+    {
+        mdata.add(new Mission());
+        madapter.notifyItemInserted(mdata.size() - 1);
+    }
+    public void RemoveItem(int index)
+    {
+        mdata.remove(index);
+        madapter.notifyItemRemoved(index);
     }
 }

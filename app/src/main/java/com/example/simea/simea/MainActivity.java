@@ -1,11 +1,14 @@
 package com.example.simea.simea;
 
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,8 +19,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import java.io.File;
+import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity
         implements TravauxFragment.OnListFragmentInteractionListener, WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
@@ -134,7 +139,6 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
-            Log.i("bonobo","created dict frag");
         } else if (id == R.id.nav_upload) {
             //
         } else if (id == R.id.nav_contacts) {
@@ -170,6 +174,14 @@ public class MainActivity extends AppCompatActivity
     public void onListFragmentInteraction(Travaux item) {
 
     }
+
+
+    // This is the swipe handler
+
+
+
+
+
     /*public void displayView(int viewId) {
 
         Fragment fragment = null;

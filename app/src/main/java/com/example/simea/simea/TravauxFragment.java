@@ -6,9 +6,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.example.simea.simea.dummy.DummyContent;
 import com.example.simea.simea.dummy.DummyContent.DummyItem;
@@ -31,6 +34,7 @@ public class TravauxFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
     private List<Travaux> mdata = new ArrayList<>();
     private MyTravauxRecyclerViewAdapter madapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -61,7 +65,7 @@ public class TravauxFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_travaux_list, container, false);
+        final View view = inflater.inflate(R.layout.fragment_travaux_list, container, false);
         mdata.add(new Travaux(0,0));
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -75,6 +79,25 @@ public class TravauxFragment extends Fragment {
             madapter = new MyTravauxRecyclerViewAdapter(mdata, mListener);
             recyclerView.setAdapter(madapter);
         }
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(madapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                RemoveItem(viewHolder.getAdapterPosition());
+            }
+        };
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
         return view;
     }
 
@@ -115,5 +138,10 @@ public class TravauxFragment extends Fragment {
     {
         mdata.add(new Travaux(0,0));
         madapter.notifyItemInserted(mdata.size() - 1);
+    }
+    public void RemoveItem(int index)
+    {
+        mdata.remove(index);
+        madapter.notifyItemRemoved(index);
     }
 }

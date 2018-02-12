@@ -67,6 +67,7 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
 
 
 
+
     }
 
     @Override
@@ -78,6 +79,15 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
         TravauxFragment fragment = new TravauxFragment();
         FragmentTransaction ft = this.getChildFragmentManager().beginTransaction().replace(R.id.WorkFrame, fragment);
         ft.commit();
+        Button butt = view.findViewById(R.id.addWork);
+        butt.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AddWork();
+            }
+        });
         return view;
     }
     private void getIDs(View view) {
@@ -92,9 +102,8 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     }
     public void AddWork()
     {
-        //TravauxFragment tf = (TravauxFragment) getChildFragmentManager().findFragmentById(R.id.WorkFrame);
-
-        //tf.AddItem();
+        TravauxFragment tf = (TravauxFragment) getChildFragmentManager().findFragmentById(R.id.WorkFrame);
+        tf.AddItem();
     }
 
     @Override

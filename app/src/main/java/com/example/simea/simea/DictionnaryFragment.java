@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,9 @@ public class DictionnaryFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private MySolutionRecyclerViewAdapter madapter;
+    private List<Solution> mdata;
+    private ItemTouchHelper mItemTouchHelper;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -57,10 +61,10 @@ public class DictionnaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_solution_list, container, false);
-        List<Solution> dataset = new ArrayList<>();
+        mdata = new ArrayList<>();
         for(int i=0; i<121;i++)
         {
-            dataset.add(new Solution("FA n°"+i,"Dummy","dodo"+i));
+            mdata.add(new Solution("FA n°"+i,"Dummy","dodo"+i));
         }
 
         // Set the adapter
@@ -72,8 +76,25 @@ public class DictionnaryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySolutionRecyclerViewAdapter(dataset,mListener));
+            recyclerView.setAdapter(new MySolutionRecyclerViewAdapter(mdata,mListener));
         }
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(madapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                RemoveItem(viewHolder.getAdapterPosition());
+            }
+        };
         return view;
     }
 
@@ -108,5 +129,17 @@ public class DictionnaryFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Solution item);
+    }
+
+
+    public void AddItem()
+    {
+        mdata.add(new Solution("None","bonobo","rien"));
+        madapter.notifyItemInserted(mdata.size() - 1);
+    }
+    public void RemoveItem(int index)
+    {
+        mdata.remove(index);
+        madapter.notifyItemRemoved(index);
     }
 }
