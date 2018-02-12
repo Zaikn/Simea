@@ -62,7 +62,7 @@ public class DictionnaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_solution_list, container, false);
         mdata = new ArrayList<>();
-        for(int i=0; i<121;i++)
+        for(int i=0; i<12;i++)
         {
             mdata.add(new Solution("FA n°"+i,"Dummy","dodo"+i));
         }
@@ -96,6 +96,10 @@ public class DictionnaryFragment extends Fragment {
                 RemoveItem(viewHolder.getAdapterPosition());
             }
         };
+
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
+
         return view;
     }
 
