@@ -25,8 +25,9 @@ import java.io.File;
 import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity
-        implements TravauxFragment.OnListFragmentInteractionListener, WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
+        implements MenuFragment.OnFragmentInteractionListener, TravauxFragment.OnListFragmentInteractionListener, WriterFragment.OnFragmentInteractionListener, MissionFragment.OnListFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, DictionnaryFragment.OnListFragmentInteractionListener {
 
+    public int dodo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

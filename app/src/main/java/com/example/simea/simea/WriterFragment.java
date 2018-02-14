@@ -1,6 +1,7 @@
 package com.example.simea.simea;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     private String mParam2;
     private FrameLayout WorkFrame;
     private OnFragmentInteractionListener mListener;
+    private Button signature;
 
     public WriterFragment() {
         // Required empty public constructor
@@ -86,6 +88,14 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
             public void onClick(View v)
             {
                 AddWork();
+            }
+        });
+        signature = view.findViewById(R.id.Signature);
+        signature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SignatureActivity.class);
+                startActivity(intent);
             }
         });
         return view;

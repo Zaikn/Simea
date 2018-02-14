@@ -59,29 +59,19 @@
             <FrameLayout
                 android:id="@+id/WorkFrame"
                 android:layout_width="match_parent"
-                android:layout_height="315dp"></FrameLayout>
+                android:layout_height="wrap_content">
+
+            </FrameLayout>
 
 
-            <com.byox.drawview.views.DrawView
-                android:id="@+id/draw_signature"
+            <Button
+                android:id="@+id/Signature"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
-                app:dv_draw_alpha="255"
-                app:dv_draw_anti_alias="true"
-                app:dv_draw_color="@color/cardview_dark_background"
-                app:dv_draw_corners="round"
-                app:dv_draw_enable_zoom="false"
-                app:dv_draw_font_family="default_font"
-                app:dv_draw_font_size="12"
-                app:dv_draw_max_zoom_factor="8"
-                app:dv_draw_mode="draw"
-                app:dv_draw_style="stroke"
-                app:dv_draw_tool="pen"
-                app:dv_draw_width="4"
-                >
-
-            </com.byox.drawview.views.DrawView>
+                android:layout_height="wrap_content"
+                android:text="Signature"
+                tools:text="Signature" />
         </LinearLayout>
+
 
 
 
