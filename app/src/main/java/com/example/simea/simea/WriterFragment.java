@@ -36,7 +36,7 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     private OnFragmentInteractionListener mListener;
     private Button signature;
 
-    public WriterFragment() {
+    public WriterFragment()  {
         // Required empty public constructor
     }
 
@@ -66,7 +66,7 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
+        onAttachToParentFragment(getParentFragment());
 
 
 
@@ -151,5 +151,19 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onAttachToParentFragment(Fragment fragment)
+    {
+        try
+        {
+            OnSavedListener mOnSavedListener = (OnSavedListener)fragment;
+
+        }
+        catch (ClassCastException e)
+        {
+            throw new ClassCastException(
+                    fragment.toString() + " must implement OnSavedListener");
+        }
     }
 }

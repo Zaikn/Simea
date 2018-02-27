@@ -1,6 +1,7 @@
 package com.example.simea.simea;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,12 +26,12 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class TravauxFragment extends Fragment {
+public class TravauxFragment extends Fragment implements OnSavedListener {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    private List<Travaux> mdata = new ArrayList<>();
+    private ArrayList<Travaux> mdata = new ArrayList<>();
     private MyTravauxRecyclerViewAdapter madapter;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -117,6 +118,11 @@ public class TravauxFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public ArrayList<Travaux> onSavedButton(ArrayList<Travaux> works) {
+        return this.mdata;
+    }
+
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Travaux item);
@@ -132,4 +138,5 @@ public class TravauxFragment extends Fragment {
         mdata.remove(index);
         madapter.notifyItemRemoved(index);
     }
+
 }
