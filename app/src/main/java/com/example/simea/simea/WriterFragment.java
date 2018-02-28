@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
 
 
 /**
@@ -35,6 +38,7 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     private FrameLayout WorkFrame;
     private OnFragmentInteractionListener mListener;
     private Button signature;
+    private ArrayList<Travaux> workData;
 
     public WriterFragment()  {
         // Required empty public constructor
@@ -66,7 +70,6 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        onAttachToParentFragment(getParentFragment());
 
 
 
@@ -134,8 +137,15 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     }
 
     @Override
-    public void onListFragmentInteraction(Travaux item) {
+    public void onListFragmentInteraction() {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        TravauxFragment someOtherNestFrag = (TravauxFragment) fragmentManager.findFragmentByTag("list");
 
+
+        if(someOtherNestFrag != null)
+        {
+            this.workData = someOtherNestFrag.getWorks();
+        }
     }
 
     /**
@@ -153,17 +163,5 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
         void onFragmentInteraction(Uri uri);
     }
 
-    public void onAttachToParentFragment(Fragment fragment)
-    {
-        try
-        {
-            OnSavedListener mOnSavedListener = (OnSavedListener)fragment;
 
-        }
-        catch (ClassCastException e)
-        {
-            throw new ClassCastException(
-                    fragment.toString() + " must implement OnSavedListener");
-        }
-    }
 }

@@ -26,7 +26,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class TravauxFragment extends Fragment implements OnSavedListener {
+public class TravauxFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -118,14 +118,11 @@ public class TravauxFragment extends Fragment implements OnSavedListener {
         mListener = null;
     }
 
-    @Override
-    public ArrayList<Travaux> onSavedButton(ArrayList<Travaux> works) {
-        return this.mdata;
-    }
+
 
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Travaux item);
+        void onListFragmentInteraction();
     }
 
     public void AddItem()
@@ -138,5 +135,8 @@ public class TravauxFragment extends Fragment implements OnSavedListener {
         mdata.remove(index);
         madapter.notifyItemRemoved(index);
     }
-
+    public ArrayList<Travaux> getWorks()
+    {
+        return this.mdata;
+    }
 }

@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        MenuFragment fragment = new MenuFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.mainFrame, fragment);
+        ft.commit();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         String pathname = Environment.getExternalStorageDirectory() + "/Simea/bnobo";
@@ -172,48 +175,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(Travaux item) {
+    public void onListFragmentInteraction() {
 
     }
 
-
-    // This is the swipe handler
-
-
-
-
-
-    /*public void displayView(int viewId) {
-
-        Fragment fragment = null;
-        String title = getString(R.string.app_name);
-
-        switch (viewId) {
-            case R.id.nav_news:
-                fragment = new NewsFragment();
-                title  = "News";
-
-                break;
-            case R.id.nav_events:
-                fragment = new EventsFragment();
-                title = "Events";
-                break;
-
-        }
-
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
-
-        // set the toolbar title
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(title);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-    }*/
 }
