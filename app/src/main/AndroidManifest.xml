@@ -29,6 +29,10 @@
         <activity
             android:name=".SignatureActivity"
             android:label="@string/title_activity_signature"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MissionDetails"
+            android:label="@string/title_activity_mission_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
