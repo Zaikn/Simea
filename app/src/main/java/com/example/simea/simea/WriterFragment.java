@@ -116,6 +116,8 @@ public class WriterFragment extends Fragment implements TravauxFragment.OnListFr
     public void AddWork()
     {
         TravauxFragment tf = (TravauxFragment) getChildFragmentManager().findFragmentById(R.id.WorkFrame);
+        FrameLayout fw = getActivity().findViewById(R.id.WorkFrame);
+        fw.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
         tf.AddItem();
     }
 

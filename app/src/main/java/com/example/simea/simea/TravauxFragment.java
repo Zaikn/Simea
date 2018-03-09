@@ -129,6 +129,7 @@ public class TravauxFragment extends Fragment {
     {
         mdata.add(new Travaux(0,0));
         madapter.notifyItemInserted(mdata.size() - 1);
+
     }
     public void RemoveItem(int index)
     {

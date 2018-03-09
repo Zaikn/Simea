@@ -119,15 +119,12 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
-            Log.i("bonobo","created dict frag");
 
         } else if (id == R.id.nav_missionList) {
-            //To-do List (réparation + dépanages + entretien + ...)
             MissionFragment fragment = new MissionFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
-            Log.i("bonobo","created dict frag");
 
         } else if (id == R.id.nav_writer) {
             // Rédaction Bon Intervention
