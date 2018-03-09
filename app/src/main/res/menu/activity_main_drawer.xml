@@ -13,10 +13,6 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Liste de missions" />
         <item
-            android:id="@+id/nav_writer"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Remplir un BI - Registre" />
-        <item
             android:id="@+id/nav_dictionnary"
             android:icon="@drawable/ic_menu_manage"
             android:title="Astuces de dépannage" />
