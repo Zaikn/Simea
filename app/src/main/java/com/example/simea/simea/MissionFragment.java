@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.simea.simea.dummy.DummyContent;
-import com.example.simea.simea.dummy.DummyContent.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
