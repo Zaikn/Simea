@@ -40,8 +40,8 @@ public class DictionnaryActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         myRecyclerView.setLayoutManager(layoutManager);
-        for(int i=0;i<121;i++)
         {
+        for(int i=0;i<121;i++)
             myDataSet.add(new Solution("Site n°"+i,"FA"+i+"B04","Nothing to say about it"));
         }
         mAdapter = new DictAdapter(myDataSet);

@@ -14,8 +14,7 @@ import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.example.simea.simea.dummy.DummyContent;
-import com.example.simea.simea.dummy.DummyContent.DummyItem;
+
 
 import java.util.ArrayList;
 import java.util.List;
