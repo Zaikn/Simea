@@ -13,4 +13,5 @@
     <string name="title_activity_signature">SignatureActivity</string>
     <string name="title_activity_mission_details">MissionDetails</string>
     <string name="title_activity_mission">MissionActivity</string>
+    <string name="title_activity_solution">SolutionActivity</string>
 </resources>

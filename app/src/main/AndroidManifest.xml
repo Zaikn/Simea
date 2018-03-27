@@ -33,6 +33,10 @@
         <activity
             android:name=".MissionActivity"
             android:label="@string/title_activity_mission"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SolutionActivity"
+            android:label="@string/title_activity_solution"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
